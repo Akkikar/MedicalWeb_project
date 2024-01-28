@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Med-Connect</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.gstatic.com" rel="preconnect">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/bootstrap-icons.css" rel="stylesheet">
+  <link href="css/boxicons.min.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="css/dashboard_style.css" rel="stylesheet">
+ <link href="datatable/dataTables.bootstrap.min.css" rel="stylesheet">
+  
+
+  <style type="text/css">
+  .dataTables_length {
+	  	margin-top: 20px;
+	  }
+	  div.dataTables_wrapper div.dataTables_filter {
+	  	text-align: left;
+	  	margin-top: 10px;
+	  }
+	  #example_next {
+	  	margin-left: 15px;
+	  }
+	  .table-bordered {
+		  border: 1px solid #ddd;
+		  border-right-width: 1px;
+		   width : 125px;
+		  font-size: 14px;
+		}
+		.table-bordered > thead > tr > th {
+		  border-bottom-width: 2px;
+		}
+  #header {
+  background: #0e1a60;
+  }
+  
+  	#header-image {
+  max-height: 50px;
+  margin-right: 6px;
+}
+  
+  </style>
+  
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="header fixed-top d-flex align-items-center">
+
+    <div class="d-flex align-items-center justify-content-between">
+      <a th:href="@{/adminDashboard}" class="logo d-flex align-items-center">
+        <img src="images/logo.png" alt="" id="header-image">
+      </a>
+      <i class="bi bi-list toggle-sidebar-btn" style="color:white;"></i>
+    </div><!-- End Logo -->
+
+   
+  </header><!-- End Header -->
+
+  <!-- ======= Sidebar ======= -->
+  <aside id="sidebar" class="sidebar">
+
+    <ul class="sidebar-nav" id="sidebar-nav">
+
+       <li class="nav-item">
+        <a class="nav-link " th:href="@{/appointments}">
+          <i class="bi bi-list-check"></i>
+          <span>Appointments</span>
+        </a>
+      </li>
+     
+	  
+	  <li class="nav-item">
+        <a class="nav-link collapsed" th:href="@{/signout}">
+          <i class="bi bi-box-arrow-right"></i>
+          <span>Sign Out</span>
+        </a>
+      </li>
+
+    </ul>
+
+  </aside><!-- End Sidebar-->
+
+  <main id="main" class="main">
+
+    <div class="pagetitle">
+      <h1>Appointments</h1>
+    </div><!-- End Page Title -->
+
+    <section class="section">
+      <div class="row">
+        <div class="col-lg-12">
+
+          <div class="card">
+            <div class="card-body">
+
+              <!-- Table with stripped rows -->
+              <table id="example" class="table table-striped table-bordered" style="width:100%">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Mobile</th>
+                    <th scope="col">Place</th>
+                    <th scope="col">Service</th>
+                    <th scope="col">Doctor</th>
+                    <th scope="col">Subject</th>
+                    <th scope="col">Message</th>
+                  </tr>
+                </thead>
+                <tbody>
+                	<th:block th:each="appointment : ${appointmentsList}">
+                       <tr>
+                           <td th:text="${appointmentStat.index+1}"></td>
+                           <td th:text="${appointment.Date}"></td>
+                           <td th:text="${appointment.Name}"></td>
+                           <td th:text="${appointment.Email}"></td>
+                           <td th:text="${appointment.Mobile}"></td>
+                           <td th:text="${appointment.Place}"></td>
+                           <td th:text="${appointment.Service}"></td>
+                           <td th:text="${appointment.Doctor}"></td>
+                           <td th:text="${appointment.Subject}"></td>
+                           <td th:text="${appointment.Message}"></td>
+                       </tr>
+                    </th:block>
+                </tbody>
+              </table>
+              <!-- End Table with stripped rows -->
+
+            </div>
+          </div>
+
+        
+        </div>
+      </div>
+    </section>
+
+  </main><!-- End #main -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+<!--Script-->
+	<script src="js/jquery-3.4.1.min.js" type="text/javascript" > </script>	
+	<script src="js/bootstrap.min.js" type="text/javascript" > </script>
+	<script src="js/tinymce.min.js"></script>
+    <script src="simple-datatables/simple-datatables.js"></script>
+  	<script src="js/main.js"></script>
+    <script src="datatable/bootstrap.datatable.js"></script>
+    <script src="datatable/jquery.dataTables.min.js"></script>
+  
+  	<script type="text/javascript">
+	  	$(document).ready(function () {
+		    $('#example').DataTable();
+		});
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,60 @@
+create database med_connect;
+
+use med_connect;
+
+CREATE TABLE Users (
+    Id int NOT NULL AUTO_INCREMENT,
+    Name varchar(255) NOT NULL,
+    Email varchar(255) NOT NULL,
+    Password varchar(255) NOT NULL,
+    Role int,
+    PRIMARY KEY (Id)
+);
+
+Insert into Users (
+		Name,
+		Email,
+		Password,
+		Role
+    ) values (
+		"Admin",
+		"admin@med-connect.com",
+		"admin@2023",
+		1
+    );
+    
+CREATE TABLE Services (
+    Id int NOT NULL AUTO_INCREMENT,
+    Name varchar(255) NOT NULL,
+    Description varchar(1024) NOT NULL,
+    Path varchar(512) NOT NULL,
+    PRIMARY KEY (Id)
+);  
+
+CREATE TABLE Doctor (
+    Id int NOT NULL AUTO_INCREMENT,
+    Name varchar(255) NOT NULL,
+    Email varchar(1024) NOT NULL,
+    Mobile varchar(512) NOT NULL,
+	Password varchar(512) NOT NULL,
+	Qualification varchar(512) NOT NULL,
+    Specialization varchar(512) NOT NULL,
+	Experience varchar(512) NOT NULL,
+    Path varchar(512) NOT NULL,
+    PRIMARY KEY (Id)
+);   
+
+
+CREATE TABLE Appointment (
+    Id int NOT NULL AUTO_INCREMENT,
+    Name varchar(255) NOT NULL,
+    Email varchar(255) NOT NULL,
+    Mobile varchar(512) NOT NULL,
+	Place varchar(512) NOT NULL,
+	Service varchar(512) NOT NULL,
+    DoctorId int NOT NULL,
+	Subject varchar(512) NOT NULL,
+    Message varchar(1024) NOT NULL,
+    Date varchar(255) NOT NULL,
+    PRIMARY KEY (Id)
+);
